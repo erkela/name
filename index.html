@@ -152,7 +152,8 @@
         0
       );
       const file = document.getElementById("file");
-      const download = document.getElementById("download")
+      const download = document.getElementById("download");
+      const credit = document.getElementById("info");
 
       const couleurValeur = document.getElementById("couleurValeur");
       const opacitéValeur = document.getElementById("opacitéValeur");
@@ -201,6 +202,7 @@
       };
 
       file.addEventListener("change", function (e) {
+        credit.style.display = "none";
         info.image = new Image();
         URL.revokeObjectURL(info.url);
         info.src = URL.createObjectURL(this.files[0]);
