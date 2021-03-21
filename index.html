@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      @font-face {
+        font-family: "Domine";
+        src: url("./Domine-VariableFont_wght.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+      body {
+        margin: 0;
+        font-family: Domine;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100vw;
+        height: 99vh;
+        background-color: #d5c1a6;
+        overflow: hidden;
+      }
+      label {
+        margin-top: 12px;
+        margin-left: 12px;
+        margin-right: 12px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #info{
+          position: absolute;
+          top:12px;
+          left:12px;
+          background:white;
+          padding: 6px;
+      }
+
+      #color {
+        height: 100vh;
+        width: 20vw;
+        min-width: 320px;
+        background-color: #d5c1a6;
+        position: absolute;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      select {
+        display: flex;
+        flex-direction: column;
+      }
+      option::selection {
+        background: white;
+      }
+      #downloadLabel{
+          justify-content: center;
+      }
+      .hover {
+        background: rgba(220, 220, 220, 1);
+      }
+
+      a{
+          margin-right:12px;
+      }
+
+      @media (orientation: portrait) {
+        body {
+          flex-direction: column;
+        }
+
+        #color {
+          width: 100vw;
+          height: 40vh;
+          top: 60vh;
+        }
+      }
+      .network{
+          width: 1em;
+          fill:#9e5b25;
+          transition:fill 200ms ease-in-out;
+      }
+      .network:hover{
+        fill:#5e3718; 
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+      <p id="info">Illustration créé par Colibry.<br/> <a href="https://twitter.com/AmelBencivenni"><svg class="network" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a><a href="https://www.instagram.com/nin_amel/?hl=en"><svg class="network" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></p>
+    <canvas id="image"></canvas>
+    <div id="color">
+      <label
+        >Couleur: <input id="colorPicker" type="color" value="#734911" />
+        <p id="couleurValeur">#734911</p></label
+      >
+      <label
+        >Opacité:
+        <input id="opacityPicker" type="range" min="0" max="100" value="25" />
+        <p id="opacitéValeur">25</p></label
+      >
+      <label
+        >Mode:
+        <select name="mode" id="modePicker">
+          <option value="normal">normal</option>
+          <option value="source-over">source-over</option>
+          <option value="source-in">source-in</option>
+          <option value="source-out">source-out</option>
+          <option value="source-atop">source-atop</option>
+          <option value="destination-over">destination-over</option>
+          <option value="destination-in">destination-in</option>
+          <option value="destination-out">destination-out</option>
+          <option value="destination-atop">destination-atop</option>
+          <option value="lighter">lighter</option>
+          <option value="copy">copy</option>
+          <option value="xor">xor</option>
+          <option value="multiply">multiply</option>
+          <option value="screen">screen</option>
+          <option value="overlay">overlay</option>
+          <option value="darken">darken</option>
+          <option value="lighten">lighten</option>
+          <option selected="selected" value="color-dodge">color-dodge</option>
+          <option value="color-burn">color-burn</option>
+          <option value="hard-light">hard-light</option>
+          <option value="soft-light">soft-light</option>
+          <option value="difference">difference</option>
+          <option value="exclusion">exclusion</option>
+          <option value="hue">hue</option>
+          <option value="saturation">saturation</option>
+          <option value="color">color</option>
+          <option value="luminosity">luminosity</option>
+        </select></label
+      >
+      <label>Fichier: <input type="file" id="file" /></label>
+      <label id="downloadLabel"
+        ><button id="download">Télécharger</button>
+       
+    </div>
+
+    <script>
+      const canvas = document.getElementById("image");
+      const ctx = canvas.getContext("2d");
+      const colorPicker = document.getElementById("colorPicker");
+      const opacityPicker = document.getElementById("opacityPicker");
+      const modePicker = document.getElementById("modePicker");
+      const options = Array.prototype.slice.call(
+        document.getElementsByTagName("option"),
+        0
+      );
+      const file = document.getElementById("file");
+      const download = document.getElementById("download")
+
+      const couleurValeur = document.getElementById("couleurValeur");
+      const opacitéValeur = document.getElementById("opacitéValeur");
+
+      function checkRatio() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        if (width / height > 1) {
+          modePicker.setAttribute("size", 27);
+        } else {
+          modePicker.removeAttribute("size");
+        }
+      }
+
+      options.forEach((node) => {
+        console.log(node);
+        node.addEventListener("mouseover", (e) => {
+          node.className = "hover";
+          draw(e.target.value);
+        });
+        node.addEventListener("mouseout", (e) => {
+          node.className = "";
+          draw();
+        });
+      });
+
+      download.addEventListener("click",()=>{
+          const url = canvas.toDataURL('image/jpeg');
+          const a = document.createElement("a");
+          a.setAttribute("download",info.name);
+          a.href = url;
+          a.click()
+      })
+
+      const info = {
+        image: null,
+        name:"livai",
+        ratio: 0,
+        filter: {
+          color: hexToRgbA(colorPicker.value),
+          opacity: opacityPicker.value,
+          mode: "color-dodge",
+        },
+        src: "livai.jpeg",
+      };
+
+      file.addEventListener("change", function (e) {
+        info.image = new Image();
+        URL.revokeObjectURL(info.url);
+        info.src = URL.createObjectURL(this.files[0]);
+        const filename = this.files[0].name.split('.').slice(0, -1).join('.');
+        info.name = filename;
+        info.image.addEventListener("load", () => {
+          const { height, width } = info.image;
+          info.ratio = height / width;
+          console.log(image);
+          resize();
+        });
+        info.image.src = info.src;
+      });
+      modePicker.addEventListener("input", (e) => {
+        info.filter.mode = e.target.value;
+
+        draw();
+      });
+
+      colorPicker.addEventListener("input", (e) => {
+        info.filter.color = hexToRgbA(e.target.value);
+        couleurValeur.textContent = e.target.value;
+        draw();
+      });
+
+      opacityPicker.addEventListener("input", (e) => {
+        info.filter.opacity = e.target.value;
+        opacitéValeur.textContent = e.target.value;
+        draw();
+      });
+
+      const image = new Image();
+      function hexToRgbA(hex) {
+        var c;
+        if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+          c = hex.substring(1).split("");
+          if (c.length == 3) {
+            c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+          }
+          c = "0x" + c.join("");
+          return [(c >> 16) & 255, (c >> 8) & 255, c & 255];
+        }
+        throw new Error("Bad Hex");
+      }
+
+      function draw(mode = null) {
+        const filter = info.filter;
+        canvas.width = canvas.width;
+        if (!mode) {
+          ctx.globalCompositeOperation = filter.mode;
+        } else {
+          ctx.globalCompositeOperation = mode;
+        }
+
+        ctx.fillStyle = `rgba(${filter.color.join(",")}, ${
+          filter.opacity / 100
+        })`;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(info.image, 0, 0, canvas.width, canvas.height);
+      }
+      function resize() {
+        const size = {
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+        info.containerRatio = window.innerHeight / window.innerWidth;
+        console.log(info.ratio - info.containerRatio);
+        if (info.ratio - info.containerRatio > 0) {
+          canvas.height = size.height;
+          canvas.width = size.height / info.ratio;
+        } else {
+          canvas.width = size.width;
+          canvas.height = size.width * info.ratio;
+        }
+        ctx.globalCompositeOperation = "hard-light";
+        ctx.fillStyle = "rgba(255,0,255,0.2)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        draw();
+      }
+      image.addEventListener("load", () => {
+        const { height, width } = image;
+        info.image = image;
+        info.ratio = height / width;
+
+        resize();
+      });
+
+      window.addEventListener("resize", function () {
+        resize();
+        checkRatio();
+      });
+
+      image.src = info.src;
+      checkRatio();
+    </script>
+  </body>
+</html>
